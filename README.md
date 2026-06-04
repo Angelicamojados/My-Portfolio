@@ -7,6 +7,9 @@ A driven 3rd-year Information Technology student blending systemic technical wor
 HTML
 CSS
 
-# Live website Link
+# Screenshot
+You can view it at screenshot folder. 
 
+# Live website Link
+https://angelicamojados.github.io/My-Portfolio/
        
