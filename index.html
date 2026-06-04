@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | IT Student & Business Manager</title>
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #131c2e;
+            --bg-border: #1e293b;
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1050px;
+            padding: 5rem 0;
+        }
+
+        /* --- HERO HEADER SECTION --- */
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--bg-border);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: #10b981;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid var(--bg-main);
+        }
+
+        header h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .subtitle {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        header .bio {
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* --- LAYOUT GRID --- */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* --- CARD ARCHITECTURE --- */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--bg-border);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: rgba(14, 165, 233, 0.4);
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* --- TIMELINE COMPONENT (Education & Experience) --- */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            border-left: 2px solid var(--bg-border);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-1.5rem - 7px);
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-main);
+            border: 2px solid var(--accent);
+        }
+
+        .role-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .location-time {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- SKILLS CHIPS COMPONENT --- */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .skills-group-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .chips-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .chip {
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--bg-border);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chip i {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        /* --- CONTACT LIST COMPONENT --- */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background-color: rgba(30, 41, 59, 0.3);
+            border-color: var(--bg-border);
+            color: var(--text-primary);
+        }
+
+        .contact-item .icon-box {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(14, 165, 233, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--bg-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 850px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 0 1rem;
+            }
+            .container {
+                padding: 3rem 0;
+            }
+            header h1 {
+                font-size: 2.25rem;
+            }
+            .card {
+                padding: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HERO PROFILE HEADER -->
+        <header>
+            <div class="avatar-container">
+                <!-- Replace with your actual square profile image path or url -->
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop" alt="Your Profile Picture" class="profile-img">
+                <div class="status-badge" title="Available for projects"></div>
+            </div>
+            <h1>Angelica R. Mojados</h1>
+            <p class="subtitle">BSIT Student</p>
+            <p class="bio">A driven 3rd-year Information Technology student blending systemic technical workflows with proven hands-on experience managing family enterprise operations and customer transactions.</p>
+        </header>
+
+        <!-- MAIN LAYOUT GRID -->
+        <div class="layout-grid">
+            
+            <!-- LEFT COLUMN: EXPERIENCE & EDUCATION -->
+            <div class="card">
+                <h2><i class="fa-solid fa-briefcase"></i> Professional History</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <p class="role-title">Inventory and Sale Management</p>
+                        <p class="location-time">Family Business &bull; Active Management</p>
+                        <p class="description">Directly supervising resource logistics, structural inventory management, and day-to-day operations to align stability with regular business development. And maneging a sale management.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <p class="role-title">Point of Sale (POS) Cashier</p>
+                        <p class="location-time">Retail Commerce Experience</p>
+                        <p class="description">Accurately processed financial entries, systematically balanced point-of-sale terminal tills daily, and preserved exceptional customer satisfaction margins.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <p class="role-title">BS in Information Technology (BSIT)</p>
+                        <p class="location-time">STI College Tanay &bull; 3rd Year Undergrad</p>
+                        <p class="description">Developing modern technical baselines in application architectures, relational database management systems, and agile technical networks.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: SKILLS & CONTACTS -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                
+                <!-- SKILLS CARD -->
+                <div class="card">
+                    <h2><i class="fa-solid fa-layer-group"></i> Competencies</h2>
+                    <div class="skills-container">
+                        
+                        <div>
+                            <p class="skills-group-title">Soft Skills</p>
+                            <div class="chips-wrapper">
+                                <span class="chip"><i class="fa-solid fa-scale-balanced"></i>Basic knowldge in MicrosoftWord</span>
+                                <span class="chip"><i class="fa-solid fa-comments"></i> Communication</span>
+                                <span class="chip"><i class="fa-solid fa-brain"></i> Critical Thinking</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="skills-group-title">Technical Skills</p>
+                            <div class="chips-wrapper">
+                                <span class="chip"><i class="fa-solid fa-table"></i>Excel</span>
+                                <span class="chip"><i class="fa-solid fa-code"></i>Troubleshooting</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CONNECTIONS CARD -->
+                <div class="card">
+                    <h2><i class="fa-solid fa-address-book"></i> Contact Information</h2>
+                    <div class="contact-list">
+                        
+                        <a href="mailto:your.actual.email@gmail.com" class="contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Email</p>
+                                <p style="font-size: 0.95rem; font-weight: 500;">mojadosangelica@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/yourgithubusername" target="_blank" class="contact-item">
+                            <div class="icon-box"><i class="fa-brands fa-github"></i></div>
+                            <div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">GitHub Profile</p>
+                                <p style="font-size: 0.95rem; font-weight: 500;">github.com/yourusername</p>
+                            </div>
+                        </a>
+
+                        <div class="contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Location</p>
+                                <p style="font-size: 0.95rem; font-weight: 500;">Tanay, Rizal, Philippines</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ACADEMIC PROJECTS PANEL (FULL WIDTH) -->
+            <div class="card full-width">
+                <h2><i class="fa-solid fa-code-branch"></i> Practical Applications & Projects</h2>
+                <div class="timeline" style="border-left: none; padding-left: 0; margin-left: 0;">
+                    <div>
+                        <p class="role-title" style="color: var(--accent);">Responsive Academic Portfolio System</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Host a online website portfolio in Github.</p>
+                        <p class="description">Develop a game entitled Saranggola-a story-driven adventure game.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
